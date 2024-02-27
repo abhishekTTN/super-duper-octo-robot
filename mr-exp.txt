@@ -1,0 +1,348 @@
+Instruction
+- Code should be pushed to the mentioned repo, https://github.com/abhishekTTN/super-duper-octo-robot on a separate branch named as "{firstname-empid}". Raise a PR against the master branch.
+- Use of any external resource is prohibited and will lead to suspension of test and further disciplinary actions. like - accessing internet over any medium, referring to any notes or written material and use of mobile phones etc. 
+- Duration of the assessment is 2 hours. Late submission will not be considered.
+- GIT submissions will be rewarded with 2 extra points.
+- Alternative way of submission is posting it to drive and share a link with edit permission.
+
+================================================================================================================================================================= 
+
+Question 1 : 3 Points
+
+Table: Warehouse
+
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| name         | varchar |
+| product_id   | int     |
+| units        | int     |
++--------------+---------+
+(name, product_id) is the primary key (combination of columns with unique values) for this table.
+Each row of this table contains the information of the products in each warehouse.
+
+ 
+
+Table: Products
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| product_id    | int     |
+| product_name  | varchar |
+| Width         | int     |
+| Length        | int     |
+| Height        | int     |
++---------------+---------+
+product_id is the primary key (column with unique values) for this table.
+Each row of this table contains information about the product dimensions (Width, Lenght, and Height) in feets of each product.
+
+ 
+
+Write a solution to report the number of cubic feet of volume the inventory occupies in each warehouse.
+
+Return the result table in any order.
+
+The query result format is in the following example.
+
+ 
+
+Example 1:
+
+Input: 
+Warehouse table:
++------------+--------------+-------------+
+| name       | product_id   | units       |
++------------+--------------+-------------+
+| LCHouse1   | 1            | 1           |
+| LCHouse1   | 2            | 10          |
+| LCHouse1   | 3            | 5           |
+| LCHouse2   | 1            | 2           |
+| LCHouse2   | 2            | 2           |
+| LCHouse3   | 4            | 1           |
++------------+--------------+-------------+
+Products table:
++------------+--------------+------------+----------+-----------+
+| product_id | product_name | Width      | Length   | Height    |
++------------+--------------+------------+----------+-----------+
+| 1          | LC-TV        | 5          | 50       | 40        |
+| 2          | LC-KeyChain  | 5          | 5        | 5         |
+| 3          | LC-Phone     | 2          | 10       | 10        |
+| 4          | LC-T-Shirt   | 4          | 10       | 20        |
++------------+--------------+------------+----------+-----------+
+Output: 
++----------------+------------+
+| warehouse_name | volume     | 
++----------------+------------+
+| LCHouse1       | 12250      | 
+| LCHouse2       | 20250      |
+| LCHouse3       | 800        |
++----------------+------------+
+Explanation: 
+Volume of product_id = 1 (LC-TV), 5x50x40 = 10000
+Volume of product_id = 2 (LC-KeyChain), 5x5x5 = 125 
+Volume of product_id = 3 (LC-Phone), 2x10x10 = 200
+Volume of product_id = 4 (LC-T-Shirt), 4x10x20 = 800
+LCHouse1: 1 unit of LC-TV + 10 units of LC-KeyChain + 5 units of LC-Phone.
+          Total volume: 1*10000 + 10*125  + 5*200 = 12250 cubic feet
+LCHouse2: 2 units of LC-TV + 2 units of LC-KeyChain.
+          Total volume: 2*10000 + 2*125 = 20250 cubic feet
+LCHouse3: 1 unit of LC-T-Shirt.
+          Total volume: 1*800 = 800 cubic feet.
+
+=================================================================================================================================================================
+
+Question 2 : 3 points
+
+Table: Employee
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| employee_id   | int     |
+| team_id       | int     |
++---------------+---------+
+employee_id is the primary key (column with unique values) for this table.
+Each row of this table contains the ID of each employee and their respective team.
+
+ 
+
+Write a solution to find the team size of each of the employees.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+ 
+
+Example 1:
+
+Input: 
+Employee Table:
++-------------+------------+
+| employee_id | team_id    |
++-------------+------------+
+|     1       |     8      |
+|     2       |     8      |
+|     3       |     8      |
+|     4       |     7      |
+|     5       |     9      |
+|     6       |     9      |
++-------------+------------+
+Output: 
++-------------+------------+
+| employee_id | team_size  |
++-------------+------------+
+|     1       |     3      |
+|     2       |     3      |
+|     3       |     3      |
+|     4       |     1      |
+|     5       |     2      |
+|     6       |     2      |
++-------------+------------+
+Explanation: 
+Employees with Id 1,2,3 are part of a team with team_id = 8.
+Employee with Id 4 is part of a team with team_id = 7.
+Employees with Id 5,6 are part of a team with team_id = 9.
+
+=================================================================================================================================================================
+
+Question 3 : 3 Points
+
+Table: DailySales
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| date_id     | date    |
+| make_name   | varchar |
+| lead_id     | int     |
+| partner_id  | int     |
++-------------+---------+
+There is no primary key (column with unique values) for this table. It may contain duplicates.
+This table contains the date and the name of the product sold and the IDs of the lead and partner it was sold to.
+The name consists of only lowercase English letters.
+
+ 
+
+For each date_id and make_name, find the number of distinct lead_id's and distinct partner_id's.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+ 
+
+Example 1:
+
+Input: 
+DailySales table:
++-----------+-----------+---------+------------+
+| date_id   | make_name | lead_id | partner_id |
++-----------+-----------+---------+------------+
+| 2020-12-8 | toyota    | 0       | 1          |
+| 2020-12-8 | toyota    | 1       | 0          |
+| 2020-12-8 | toyota    | 1       | 2          |
+| 2020-12-7 | toyota    | 0       | 2          |
+| 2020-12-7 | toyota    | 0       | 1          |
+| 2020-12-8 | honda     | 1       | 2          |
+| 2020-12-8 | honda     | 2       | 1          |
+| 2020-12-7 | honda     | 0       | 1          |
+| 2020-12-7 | honda     | 1       | 2          |
+| 2020-12-7 | honda     | 2       | 1          |
++-----------+-----------+---------+------------+
+Output: 
++-----------+-----------+--------------+-----------------+
+| date_id   | make_name | unique_leads | unique_partners |
++-----------+-----------+--------------+-----------------+
+| 2020-12-8 | toyota    | 2            | 3               |
+| 2020-12-7 | toyota    | 1            | 2               |
+| 2020-12-8 | honda     | 2            | 2               |
+| 2020-12-7 | honda     | 3            | 2               |
++-----------+-----------+--------------+-----------------+
+Explanation: 
+For 2020-12-8, toyota gets leads = [0, 1] and partners = [0, 1, 2] while honda gets leads = [1, 2] and partners = [1, 2].
+For 2020-12-7, toyota gets leads = [0] and partners = [1, 2] while honda gets leads = [0, 1, 2] and partners = [1, 2].
+
+
+=================================================================================================================================================================
+
+Question 4 : 4 Points
+
+Table Salaries:
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| company_id    | int     |
+| employee_id   | int     |
+| employee_name | varchar |
+| salary        | int     |
++---------------+---------+
+In SQL,(company_id, employee_id) is the primary key for this table.
+This table contains the company id, the id, the name, and the salary for an employee.
+
+ 
+
+Find the salaries of the employees after applying taxes. Round the salary to the nearest integer.
+
+The tax rate is calculated for each company based on the following criteria:
+
+    0% If the max salary of any employee in the company is less than $1000.
+    24% If the max salary of any employee in the company is in the range [1000, 10000] inclusive.
+    49% If the max salary of any employee in the company is greater than $10000.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+ 
+
+Example 1:
+
+Input: 
+Salaries table:
++------------+-------------+---------------+--------+
+| company_id | employee_id | employee_name | salary |
++------------+-------------+---------------+--------+
+| 1          | 1           | Tony          | 2000   |
+| 1          | 2           | Pronub        | 21300  |
+| 1          | 3           | Tyrrox        | 10800  |
+| 2          | 1           | Pam           | 300    |
+| 2          | 7           | Bassem        | 450    |
+| 2          | 9           | Hermione      | 700    |
+| 3          | 7           | Bocaben       | 100    |
+| 3          | 2           | Ognjen        | 2200   |
+| 3          | 13          | Nyancat       | 3300   |
+| 3          | 15          | Morninngcat   | 7777   |
++------------+-------------+---------------+--------+
+Output: 
++------------+-------------+---------------+--------+
+| company_id | employee_id | employee_name | salary |
++------------+-------------+---------------+--------+
+| 1          | 1           | Tony          | 1020   |
+| 1          | 2           | Pronub        | 10863  |
+| 1          | 3           | Tyrrox        | 5508   |
+| 2          | 1           | Pam           | 300    |
+| 2          | 7           | Bassem        | 450    |
+| 2          | 9           | Hermione      | 700    |
+| 3          | 7           | Bocaben       | 76     |
+| 3          | 2           | Ognjen        | 1672   |
+| 3          | 13          | Nyancat       | 2508   |
+| 3          | 15          | Morninngcat   | 5911   |
++------------+-------------+---------------+--------+
+Explanation: 
+For company 1, Max salary is 21300. Employees in company 1 have taxes = 49%
+For company 2, Max salary is 700. Employees in company 2 have taxes = 0%
+For company 3, Max salary is 7777. Employees in company 3 have taxes = 24%
+The salary after taxes = salary - (taxes percentage / 100) * salary
+For example, Salary for Morninngcat (3, 15) after taxes = 7777 - 7777 * (24 / 100) = 7777 - 1866.48 = 5910.52, which is rounded to 5911.
+
+=================================================================================================================================================================
+
+Question 5 : 5 Points
+
+Write a map reduce program to find the maximum number in a file or a given list.
+
+=================================================================================================================================================================
+
+Question 6 : 3 Points
+
+Given an array nums of integers and integer k, return the maximum sum such that there exists i < j with nums[i] + nums[j] = sum and sum < k. If no i, j exist satisfying this equation, return -1.
+
+ 
+
+Example 1:
+
+Input: nums = [34,23,1,24,75,33,54,8], k = 60
+Output: 58
+Explanation: We can use 34 and 24 to sum 58 which is less than 60.
+
+Example 2:
+
+Input: nums = [10,20,30], k = 15
+Output: -1
+Explanation: In this case it is not possible to get a pair sum less that 15.
+
+ 
+
+Constraints:
+
+    1 <= nums.length <= 100
+    1 <= nums[i] <= 1000
+    1 <= k <= 2000
+    
+Code as,
+
+class Question(object):
+    def solution(self, nums, k):    
+
+=================================================================================================================================================================
+
+Question 7 : 4 Points
+
+Given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return the minimum number of conference rooms required.
+
+ 
+
+Example 1:
+
+Input: intervals = [[0,30],[5,10],[15,20]]
+Output: 2
+
+Example 2:
+
+Input: intervals = [[7,10],[2,4]]
+Output: 1
+
+ 
+
+Constraints:
+
+    1 <= intervals.length <= 104
+    0 <= starti < endi <= 106
+    
+Code as,
+
+class Question(object):
+    def solution(self, intervals):
