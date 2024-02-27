@@ -1,0 +1,91 @@
+
+Q1.
+
+Select w.name as warehouse_name, sum(p.length*p.width*p.height*w.units) as volume from warehouse w
+Inner join products p on w.product_id=p.product_id
+group by w.name
+order by warehouse_name;
+
+
+
+
+
+Q3.
+select date_id, make_name, count(distinct(lead_id)) as unique_leads , count(distinct(partner_id)) as unique_partners from dailysales
+group by(make_name,date_id)
+order by make_name desc;
+
+
+
+Q4.
+select company_id, employee_id , employee_name
+case
+	when (select company_id,max(salary) from salaries group by (company_id)) > 10000 then salary = salary - (0.49*salary),
+	when (select company_id,max(salary) from salaries group by (company_id)) between 1000 and 10000 then salary = salary - (0.24*salary),
+	else salary = salary
+end as salary 
+from salaries;
+
+
+
+
+Q5.
+
+def mapper(lst):
+inter_lst = []
+for digit in lst:
+inter_lst.append([digit,1])
+return inter_lst
+
+def shuffle_sort(map_lst):
+sorted_lst = sorted(map_lst)
+
+return sorted_lst
+
+def reducer(shuffled_sort_result):
+max_number = max(shuffled_sort_result)
+return max_number[0]
+
+def mapreduce():
+lst = [1,5,3,6,7,3,3,2,5,6,7,8,9,10,10]
+mapped_result = mapper(lst)
+
+shuffled_sort_result = shuffle_sort(mapped_result)
+
+reduced_result = reducer(shuffled_sort_result)
+print("Max value: ",reduced_result)
+mapreduce()
+
+
+
+Q6.
+class Question():
+    def solution(self,nums,k):
+        max = 0
+        for i in range(len(nums)):
+            for j in range(len(nums)-1):
+                sum  = nums[i] + nums[j+1]
+                if max<sum and sum<k:
+                    max = sum
+        if max != 0:
+            return max
+        else:
+            return -1
+
+
+
+
+nums = [34,23,1,24,75,33,54,8]
+k = 60
+ques = Question()
+
+print(ques.solution(nums,k))
+
+
+
+
+
+
+
+
+
